@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>popup-paging-web</groupId>
+  <artifactId>popup-paging-web</artifactId>
+  <version>1.0.0</version>
+  <packaging>war</packaging>
+  <url>http://www.egovframe.go.kr</url>
+  
+  	<licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    
+	<properties>
+	    <spring.maven.artifact.version>5.3.6</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.0.0</org.egovframe.rte.version>
+	</properties>
+	
+	<repositories>
+        <repository>
+            <id>mvn2s</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+			<id>egovframe</id>
+			<url>https://maven.egovframe.go.kr/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+    </repositories>
+  
+	<dependencies>
+		<!-- 표준프레임워크 실행환경 -->
+        <dependency>
+		    <groupId>org.egovframe.rte</groupId>
+		    <artifactId>org.egovframe.rte.ptl.mvc</artifactId>
+		    <version>${org.egovframe.rte.version}</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<artifactId>commons-logging</artifactId>
+		    		<groupId>commons-logging</groupId>
+		    	</exclusion>
+		    </exclusions>
+        </dependency>
+        <dependency>
+		    <groupId>org.egovframe.rte</groupId>
+		    <artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
+		    <version>${org.egovframe.rte.version}</version>
+        </dependency>
+        <dependency>
+			<groupId>org.egovframe.rte</groupId>
+			<artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
+			<version>${org.egovframe.rte.version}</version>
+		</dependency>
+       	<dependency>
+			<groupId>org.egovframe.rte</groupId>
+			<artifactId>org.egovframe.rte.fdl.property</artifactId>
+			<version>${org.egovframe.rte.version}</version>
+		</dependency>
+		
+	     <!-- Spring Web Dependency -->
+	     <dependency>
+	         <groupId>org.springframework</groupId>
+	         <artifactId>spring-web</artifactId>
+	         <version>5.3.22</version>
+	     </dependency>
+	
+	     <!-- Spring Context Dependency -->
+	     <dependency>
+	         <groupId>org.springframework</groupId>
+	         <artifactId>spring-context</artifactId>
+	         <version>5.3.22</version>
+	     </dependency>
+	
+	     <!-- Spring Web MVC Dependency -->
+	     <dependency>
+	         <groupId>org.springframework</groupId>
+	         <artifactId>spring-webmvc</artifactId>
+	         <version>5.3.22</version>
+	     </dependency>
+	</dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

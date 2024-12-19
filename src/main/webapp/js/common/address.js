@@ -90,7 +90,7 @@ function initSetting(){
 			};
 			
 			$.ajax({
-				url: "/comm/address/getDistrictList"
+				url: "/common/address/getDistrictList"
 				,data : JSON.stringify(param)
 				,dataType : 'json'
 				,async: false
@@ -151,7 +151,7 @@ function initSetting(){
 			};
 			
 			$.ajax({
-				url: "/comm/address/getDongList"
+				url: "/common/address/getDongList"
 				,data : JSON.stringify(param)
 				,dataType : 'json'
 				,async: false
@@ -195,7 +195,7 @@ function fnCityList(){
 		type: "POST",
 		dataType: "json",
 		contentType: "application/json; charset=utf-8",
-		url: "/comm/address/getCityList",
+		url: "/common/address/getCityList",
 		data : JSON.stringify(param),
 		async: false,
 		success: function(resData) {
@@ -257,7 +257,7 @@ function getAddressList(){
 	};
 	
 	$.ajax({
-		url: '/comm/address/getAddrList',
+		url: '/common/address/getAddrList',
 		type: 'POST',
 		contentType : "application/json; charset=utf-8",
 		data: JSON.stringify(param),
@@ -633,7 +633,7 @@ function pageInfo(page){
 	};
 	
 	$.ajax({
-		url: '/comm/address/getAddrList',
+		url: '/common/address/getAddrList',
 		type: 'POST',
 		contentType : "application/json; charset=utf-8",
 		data: JSON.stringify(param),

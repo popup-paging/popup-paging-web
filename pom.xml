@@ -90,6 +90,67 @@
 	         <artifactId>spring-webmvc</artifactId>
 	         <version>5.3.22</version>
 	     </dependency>
+	     
+	     <dependency><!-- 메서드의 자동 생성과 자동 리소스 관리 기능 -->
+        	<groupId>org.projectlombok</groupId>
+        	<artifactId>lombok</artifactId>
+        	<version>1.18.24</version>
+        	<scope>provided</scope>
+        </dependency>
+        <dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		    <version>2.2.0</version>
+		    <exclusions>
+		        <!-- 중복되는 log4j-to-slf4j 제거 -->
+		        <exclusion>
+		            <groupId>org.apache.logging.log4j</groupId>
+		            <artifactId>log4j-to-slf4j</artifactId>
+		        </exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency><!-- 구글 / Java 객체를 JSON 표현으로 변환 -->
+        	<groupId>com.google.code.gson</groupId>
+        	<artifactId>gson</artifactId>
+        	<version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+            <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency><!-- Java용 구글 API 클라이언트 라이브러리 -->
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.26.0</version>
+        </dependency>
+        <dependency><!-- JSON을 위한 간단한 Java 툴킷 -->
+        	<groupId>com.googlecode.json-simple</groupId>
+        	<artifactId>json-simple</artifactId>
+        	<version>1.1</version>
+        </dependency>
+        <dependency><!-- JSON 데이터 처리 -->
+		    <groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId><!-- Core Jackson 처리 추상화(일명 스트리밍 API), JSON 구현 -->
+			<version>2.9.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.9.5</version>
+		</dependency>
+        <dependency>
+        	<groupId>com.fasterxml.jackson.core</groupId>
+        	<artifactId>jackson-databind</artifactId>
+        	<version>2.9.5</version>
+        </dependency>
+	     
 	</dependencies>
 
     <build>
@@ -107,4 +168,5 @@
             </plugin>
         </plugins>
     </build>
+    
 </project>

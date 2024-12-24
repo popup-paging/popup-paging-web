@@ -17,14 +17,19 @@ noData += '	<td colspan="5"><p>데이터가 없습니다</p></td>';
 noData += '</tr>';
 
 $(document).ready(function(){
+	
+	//***** api 통신 확인
+	fnCityList();
+	
+	
 	//초기화
-	$("button[name='btnSearchZipcode']").click(function () {
+	/*$("button[name='btnSearchZipcode']").click(function () {
 	    initAddressSearch();
 	});
 	//시도 세팅
 	fnCityList();
 	//초기 선언
-	initSetting();
+	initSetting();*/
 });
 
 //초기화
@@ -199,6 +204,9 @@ function fnCityList(){
 		data : JSON.stringify(param),
 		async: false,
 		success: function(resData) {
+			
+			console.log(":: resData ::");
+			console.log(resData);
 			
 			$('#sido').empty();
 					

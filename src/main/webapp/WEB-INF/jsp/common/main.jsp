@@ -14,7 +14,7 @@
 		<script src="/resources/js/common.js"></script>
 		<div id="container">
 			<section id="content">
-				<button type="button" id="btnSearchZipcode" name="btnSearchZipcode" class="btn_ty_s_c3" data-toggle="modal" data-target="#modalAddress">ttt</button>
+				<button type="button" id="btnSearchZipcode" name="btnSearchZipcode" class="btn_ty_s_c3" data-toggle="modal" data-target="#modalAddress">popup</button>
 			</section>
 		</div>
 		<jsp:include page="/WEB-INF/jsp/common/address.jsp"/>

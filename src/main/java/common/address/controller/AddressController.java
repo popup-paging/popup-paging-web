@@ -21,7 +21,12 @@ import common.address.service.model.AddressVO;
 @RequestMapping("/common")
 public class AddressController {
 	
-	String apiUrl = "http://localhost:";
+	//ECS, EKS에서 사용
+	//String apiUrl = "http://localhost:";
+	
+	//자체 Docker Compose 컨테이너 간 통신용
+	String apiUrl = "http://api:";
+	
 	String port = "60818";
 	
 	@RequestMapping(value = "/main")

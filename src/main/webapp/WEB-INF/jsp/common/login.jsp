@@ -60,30 +60,23 @@
   
 	<script>
 	function login() {
-		const username = document.getElementById('username').value;
-		const password = document.getElementById('password').value;
-		
-		$.ajax({
-		  type: "POST",
-		  url: "/common/auth/login",
-		  contentType: "application/json",
-		  data: JSON.stringify({ username: username, password: password }),
-		  dataType: "json",
-		  success: function(data) {
-		    if (data.sessionId) {
-		      // 로그인 성공 시 세션 ID를 로컬 스토리지에 저장
-		      localStorage.setItem('sessionId', data.sessionId);
-		      // 메인 페이지로 이동
-		      window.location.href = '/common/main'; 
-		    } else {
-		      alert('로그인 실패');
-		    }
-		  },
-		  error: function(xhr, status, error) {
-		    console.error('Error:', error);
-		    alert('로그인 실패');
-		  }
-		});
+	    const username = document.getElementById('username').value;
+	    const password = document.getElementById('password').value;
+
+	    $.ajax({
+	        type: "POST",
+	        url: "http://localhost:60818/common/auth/login",  // ← API 서버 직접 호출
+	        contentType: "application/json",
+	        data: JSON.stringify({ username, password }),
+	        xhrFields: { withCredentials: true }, // ← 쿠키 저장/전송 허용
+	        success: function() {
+	            window.location.href = '/common/main';
+	        },
+	        error: function(xhr, status, error) {
+	            console.error('로그인 실패:', error);
+	            alert('로그인 실패');
+	        }
+	    });
 	}
 	</script>
 </body>

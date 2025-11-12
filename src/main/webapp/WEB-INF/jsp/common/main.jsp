@@ -26,8 +26,8 @@
 	function logout() {
 	    $.ajax({
 	        type: "POST",
-	        //url: "http://localhost:60818/common/auth/logout",  // API 서버 로그아웃 엔드포인트
-	        url: "http://43.201.181.113:60818/common/auth/logout",
+	        url: "http://localhost:60818/common/auth/logout",  // API 서버 로그아웃 엔드포인트
+	        //url: "http://43.201.167.95:60818/common/auth/logout",
 	        xhrFields: { withCredentials: true },              // 쿠키 포함 전송
 	        success: function() {
 	            // 로그아웃 후 로그인 페이지로 이동

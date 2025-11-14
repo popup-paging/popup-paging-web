@@ -66,7 +66,8 @@
 	    $.ajax({
 	        type: "POST",
 	        //url: "http://localhost:60818/common/auth/login",  // ← localhost 확인
-	        url: "http://52.78.23.52:60818/common/auth/login",		// ← EC2 확인
+	        //url: "http://52.78.23.52:60818/common/auth/login",		// ← EC2 확인
+	        url: "http://52.78.23.52/api/common/auth/login", // k3s (브라우저 -> 서버 간 통신)
 	        contentType: "application/json",
 	        data: JSON.stringify({ username, password }),
 	        xhrFields: { withCredentials: true }, // ← 쿠키 저장/전송 허용

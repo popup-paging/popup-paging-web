@@ -27,7 +27,8 @@
 	    $.ajax({
 	        type: "POST",
 	        //url: "http://localhost:60818/common/auth/logout",  		// localhost 확인
-	        url: "http://52.78.23.52:60818/common/auth/logout",		// ← EC2 확인
+	        //url: "http://52.78.23.52:60818/common/auth/logout",		// ← EC2 확인
+	        url: "http://52.78.23.52/api/common/auth/logout",		// k3s (브라우저 -> 서버 간 통신)
 	        xhrFields: { withCredentials: true },              // 쿠키 포함 전송
 	        success: function() {
 	            // 로그아웃 후 로그인 페이지로 이동

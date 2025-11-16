@@ -54,7 +54,7 @@ public class AddressController {
 			Map<String, Object> param = new HashMap<String, Object>();
 			
 			//String url = apiUrl + port + "/common/address/getCityList"; // local, EC2 적용
-			String url = "http://api-svc:60818/common/address/getCityList"; // k3s (서버 간 통신)
+			String url = "http://api-svc:60818/api/common/address/getCityList"; // k3s (서버 간 통신)
 			String res = HttpConnectionUtil.protocolRequest(url, param,"POST");
 			
 			List<Map<String, Object>> list = new ObjectMapper().readValue(res, new TypeReference<List<Map<String, Object>>>() {});

@@ -29,6 +29,9 @@ public class AddressController {
 	
 	String port = "60818";
 	
+	// kubeadm용 
+	private final String API_BASE_URL = "http://api-svc.paging.svc.cluster.local:60818";
+	
 	@RequestMapping(value = "/main")
     public String main() {
         return "common/main";
@@ -54,7 +57,8 @@ public class AddressController {
 			Map<String, Object> param = new HashMap<String, Object>();
 			
 			//String url = apiUrl + port + "/common/address/getCityList"; // local, EC2 적용
-			String url = "http://api-svc:60818/api/common/address/getCityList"; // k3s (서버 간 통신)
+			//String url = "http://api-svc:60818/api/common/address/getCityList"; // k3s (서버 간 통신)
+			String url = API_BASE_URL + "/api/common/address/getCityList"; // kubeadm (서버 간 통신)
 			String res = HttpConnectionUtil.protocolRequest(url, param,"POST");
 			
 			List<Map<String, Object>> list = new ObjectMapper().readValue(res, new TypeReference<List<Map<String, Object>>>() {});

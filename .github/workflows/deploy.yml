@@ -35,6 +35,7 @@ jobs:
             # 5. 기존 배포 파일 제거 (Tomcat 완전 종료 후 삭제)
             rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT
             rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT.war
+            rm -rf /home/ec2-user/ui/tomcat/work/Catalina
 
             # 6. 최신 WAR를 ROOT.war로 배포
             cp "$LATEST_WAR" /home/ec2-user/ui/tomcat/webapps/ROOT.war

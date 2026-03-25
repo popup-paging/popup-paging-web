@@ -28,12 +28,13 @@ jobs:
               exit 1
             fi
 
-            # 4. Tomcat 종료 (이미 꺼져있는 경우도 정상 처리)
+            # 4. Tomcat 종료
             /home/ec2-user/ui/tomcat/bin/shutdown.sh || pkill -f tomcat || true
             sleep 5
-
-            # 5. 기존 배포 파일 제거 (캐시 문제 방지)
-            rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT*
+            
+            # 5. 기존 배포 파일 제거 (Tomcat 완전 종료 후 삭제)
+            rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT
+            rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT.war
 
             # 6. 최신 WAR를 ROOT.war로 배포
             cp "$LATEST_WAR" /home/ec2-user/ui/tomcat/webapps/ROOT.war

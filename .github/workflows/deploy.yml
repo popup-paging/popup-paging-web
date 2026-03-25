@@ -1,11 +1,9 @@
 on:
   push:
     branches: [ master ]   # master 브랜치 push 시 자동 실행
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: EC2 접속 후 배포
         uses: appleboy/ssh-action@v0.1.6
@@ -31,14 +29,14 @@ jobs:
             # 4. Tomcat 종료
             /home/ec2-user/ui/tomcat/bin/shutdown.sh || pkill -f tomcat || true
             sleep 5
-            
-            # 5. 기존 배포 파일 제거 (Tomcat 완전 종료 후 삭제)
-            rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT
-            rm -rf /home/ec2-user/ui/tomcat/webapps/ROOT.war
+
+            # 5. 기존 배포 파일 및 캐시 제거
+            rm -rf /home/ec2-user/ui/tomcat/webapps/popup-paging-web-1.0.0
+            rm -rf /home/ec2-user/ui/tomcat/webapps/popup-paging-web-1.0.0.war
             rm -rf /home/ec2-user/ui/tomcat/work/Catalina
 
-            # 6. 최신 WAR를 ROOT.war로 배포
-            cp "$LATEST_WAR" /home/ec2-user/ui/tomcat/webapps/ROOT.war
+            # 6. 최신 WAR 배포
+            cp "$LATEST_WAR" /home/ec2-user/ui/tomcat/webapps/popup-paging-web-1.0.0.war
 
             # 7. Tomcat 재시작
             /home/ec2-user/ui/tomcat/bin/startup.sh

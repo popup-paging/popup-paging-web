@@ -1,9 +1,11 @@
 on:
   push:
     branches: [ master ]   # master 브랜치 push 시 자동 실행
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: EC2 접속 후 배포
         uses: appleboy/ssh-action@v0.1.6
@@ -26,7 +28,7 @@ jobs:
               exit 1
             fi
 
-            # 4. Tomcat 종료
+            # 4. Tomcat 종료 (이미 꺼져있는 경우도 정상 처리)
             /home/ec2-user/ui/tomcat/bin/shutdown.sh || pkill -f tomcat || true
             sleep 5
 
@@ -40,3 +42,12 @@ jobs:
 
             # 7. Tomcat 재시작
             /home/ec2-user/ui/tomcat/bin/startup.sh
+
+      - name: Slack 배포 결과 알림
+        if: always()   # 성공/실패 모두 알림
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
